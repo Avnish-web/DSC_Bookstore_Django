@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DSC BookStore Login</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            background: linear-gradient(135deg, #1d3557, #457b9d, #a8dadc);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-size: 200% 200%;
+            animation: gradientShift 10s ease infinite;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .login-container {
+            background: #f9f9f9;
+            padding: 40px 35px;
+            border-radius: 14px;
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 360px;
+            max-width: 90%;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 30px;
+            color: #1d3557;
+        }
+
+        h2 {
+            margin-top: 8px;
+            font-weight: 400;
+            font-size: 16px;
+            color: #457b9d;
+            margin-bottom: 25px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            margin-bottom: 18px;
+            font-size: 15px;
+            transition: border-color 0.3s;
+        }
+
+        input[type="text"]:focus {
+            border-color: #1d3557;
+            outline: none;
+        }
+
+        .error-message {
+            color: #e63946;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            background: #1d3557;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background: #16324f;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h1>DSC BookStore</h1>
+        <h2>Students Digital Library</h2>
+        <form method="post">
+            {% csrf_token %}
+            <input type="text" name="username" placeholder="Enter your name" required>
+            {% if error %}
+                <div class="error-message">{{ error }}</div>
+            {% endif %}
+            <button type="submit">Access Library</button>
+        </form>
+    </div>
+</body>
+</html>
